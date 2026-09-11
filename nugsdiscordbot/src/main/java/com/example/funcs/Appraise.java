@@ -39,6 +39,13 @@ public class Appraise implements COMMAND {
         return this;
     }
 
+    /**
+     * Function to appraise a character. This function will read the character's JSON file and output their stats and skills in a formatted message.
+     * If the character does not exist, it will state that the character could not be found.
+     * 
+     * Parameters:
+     * - parameters[1]: The name of the character to appraise.
+     */
     @Override
     public void execute() {
 
@@ -76,16 +83,16 @@ public class Appraise implements COMMAND {
                             + "Name: " + charaSheetJSON.getString("name")
                             + " | Species: " + charaSheetJSON.getString("species")
                             + "\nStats:\n"
-                            + " HP: " + charaSheetJSON.getJSONObject("stats").getInt("HP")
-                            + " MP: " + charaSheetJSON.getJSONObject("stats").getInt("MP")
-                            + " SPY: " + charaSheetJSON.getJSONObject("stats").getInt("SPY")
-                            + " SPR: " + charaSheetJSON.getJSONObject("stats").getInt("SPR")
+                            + " HP: " + charaSheetJSON.getJSONObject("stats").getInt("HPcurr") + "/" + charaSheetJSON.getJSONObject("stats").getInt("HPmax")
+                            + " MP: " + charaSheetJSON.getJSONObject("stats").getInt("MPcurr") + "/" + charaSheetJSON.getJSONObject("stats").getInt("MPmax")
+                            + " SPY: " + charaSheetJSON.getJSONObject("stats").getInt("SPYcurr") + "/" + charaSheetJSON.getJSONObject("stats").getInt("SPYmax")
+                            + " SPR: " + charaSheetJSON.getJSONObject("stats").getInt("SPRcurr") + "/" + charaSheetJSON.getJSONObject("stats").getInt("SPRmax")
                             + "\n"
-                            + " OFF: " + charaSheetJSON.getJSONObject("stats").getInt("OFF")
-                            + " DEF: " + charaSheetJSON.getJSONObject("stats").getInt("DEF")
-                            + " MAG: " + charaSheetJSON.getJSONObject("stats").getInt("OFF")
-                            + " RES: " + charaSheetJSON.getJSONObject("stats").getInt("RES")
-                            + " SPD: " + charaSheetJSON.getJSONObject("stats").getInt("SPD")
+                            + " OFF: " + charaSheetJSON.getJSONObject("stats").getInt("OFFcurr")
+                            + " DEF: " + charaSheetJSON.getJSONObject("stats").getInt("DEFcurr")
+                            + " MAG: " + charaSheetJSON.getJSONObject("stats").getInt("OFFcurr")
+                            + " RES: " + charaSheetJSON.getJSONObject("stats").getInt("REScurr")
+                            + " SPD: " + charaSheetJSON.getJSONObject("stats").getInt("SPDcurr")
                             + "\nSkills:\n " + charaSheetJSON.getString("skills")
                             + "\n```";
 
