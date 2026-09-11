@@ -54,7 +54,7 @@ public class Add implements COMMAND {
 
         if (parameters.length < 3) {
             channel.sendMessage(
-                    name + " called without enough parameters. Use with a name and something to add! Usage: \n!add \"Character name\" \"skill name\" \"skill name\" ...")
+                    name + " called without enough parameters. Use with a name and something to add! Usage: \n`!add \"Character name\" \"skill name\" \"skill name\" ...`")
                     .queue();
             return;
         } else {
