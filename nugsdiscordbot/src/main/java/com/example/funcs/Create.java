@@ -51,7 +51,7 @@ public class Create implements COMMAND {
 
         if (parameters.length < 2) {
             channel.sendMessage(
-                    name + " called without enough parameters. Use with the name of the character you would like to create. Usage:\n !create \"name\"")
+                    name + " called without enough parameters. Use with the name of the character you would like to create. Usage:\n`!create \"name\"`")
                     .queue();
             return;
         } else {
