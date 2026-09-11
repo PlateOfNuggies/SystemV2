@@ -45,6 +45,7 @@ public class Appraise implements COMMAND {
      * 
      * Parameters:
      * - parameters[1]: The name of the character to appraise.
+     * - parameters[2]: The level of Appraisal used (default: 10).
      */
     @Override
     public void execute() {
@@ -55,12 +56,15 @@ public class Appraise implements COMMAND {
 
         if (parameters.length < 2) {
             channel.sendMessage(
-                    name + " called without enough parameters. Use with the name of the character you would like to appraise. Usage:\n !appraise \"name\"")
+                    name + " called without enough parameters. Use with the name of the character you would like to appraise. (Optional: Level of appraisal, default 10.) Usage:\n`!appraise \"name\" <level>`")
                     .queue();
             return;
         } else {
+            if (parameters.length < 3) {
+                parameters = new String[] {parameters[0], parameters[1], "10"};
+            }
 
-            System.out.println("Called Appraise on " + parameters[1]);
+            System.out.println("Called Appraise on " + parameters[1] + " with level " + parameters[2]);
             File f = new File(charaPath + "\\" + parameters[1] + ".txt");
             if (f.isFile()) {
                 channel.sendMessage("Appraising " + parameters[1]).queue();
