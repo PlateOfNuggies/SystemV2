@@ -15,6 +15,7 @@ import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
 public class Create implements COMMAND {
     JDA api;
     String name = "create";
+    String help = "Use with the name of the character you would like to create. Usage:\n`!create \"name\"`";
     String[] parameters;
     MessageChannel channel;
     Message event;
@@ -50,9 +51,7 @@ public class Create implements COMMAND {
         }
 
         if (parameters.length < 2) {
-            channel.sendMessage(
-                    name + " called without enough parameters. Use with the name of the character you would like to create. Usage:\n`!create \"name\"`")
-                    .queue();
+            channel.sendMessage(name + " called without enough parameters. " + help).queue();
             return;
         } else {
             try {
