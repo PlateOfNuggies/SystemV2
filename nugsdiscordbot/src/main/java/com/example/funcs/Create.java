@@ -76,24 +76,41 @@ public class Create implements COMMAND {
 
     };
 
+    /**
+     * Function to write a template JSON object to a file. This is used when creating a new character file.
+     * 
+     * @param file The file to write the template to.
+     * @param charName The name of the character to be created.
+     * @return A JSONObject representing the template for the character.
+     */
     public JSONObject writeTemplate(File file, String charName) {
 
-        //
+        // Adding everything to JSON object to be written to file
         JSONObject templateJSON = new JSONObject();
         JSONObject stats = new JSONObject();
         templateJSON.put("name", charName);
         templateJSON.put("species", "");
 
-        stats.put("HP", "0");
-        stats.put("MP", "0");
-        stats.put("SPY", "0");
-        stats.put("SPR", "0");
+        stats.put("HPmax", "0");
+        stats.put("MPmax", "0");
+        stats.put("SPYmax", "0");
+        stats.put("SPRmax", "0");
+        
+        stats.put("HPcurr", "0");
+        stats.put("MPcurr", "0");
+        stats.put("SPYcurr", "0");
+        stats.put("SPRcurr", "0");
 
-        stats.put("OFF", "0");
-        stats.put("DEF", "0");
-        stats.put("MAG", "0");
-        stats.put("RES", "0");
-        stats.put("SPD", "0");
+        stats.put("OFFmax", "0");
+        stats.put("DEFmax", "0");
+        stats.put("MAGmax", "0");
+        stats.put("RESmax", "0");
+        stats.put("SPDmax", "0");
+        stats.put("OFFcurr", "0");
+        stats.put("DEFcurr", "0");
+        stats.put("MAGcurr", "0");
+        stats.put("REScurr", "0");
+        stats.put("SPDcurr", "0");
 
         templateJSON.put("stats", stats);
 
