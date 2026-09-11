@@ -16,6 +16,7 @@ import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
 public class Appraise implements COMMAND {
     JDA api;
     String name = "appraise";
+    String help = "Use with the name of the character you would like to appraise. (Optional: Level of appraisal, default 10.) Usage:\n`!appraise \"name\" <level>`";
     String[] parameters;
     MessageChannel channel;
     Message event;
@@ -55,9 +56,7 @@ public class Appraise implements COMMAND {
         }
 
         if (parameters.length < 2) {
-            channel.sendMessage(
-                    name + " called without enough parameters. Use with the name of the character you would like to appraise. (Optional: Level of appraisal, default 10.) Usage:\n`!appraise \"name\" <level>`")
-                    .queue();
+            channel.sendMessage(name + " called without enough parameters. " + help).queue();
             return;
         } else {
             if (parameters.length < 3) {
