@@ -1,0 +1,1 @@
+{"skills":"none","species":"Elroe Wiris","stats":{"RES":"0","MAG":"0","MP":"0","SPR":"0","DEF":"0","SPD":"0","HP":"0","SPY":"0","OFF":"0"},"name":"Tender"}

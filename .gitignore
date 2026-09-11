@@ -1,0 +1,15 @@
+# Compiled Java / Maven output — never commit these
+target/
+*.class
+
+# The token source file — keep locally, never push
+nugsdiscordbot/src/main/java/com/example/Token.java
+
+# IDE / editor settings (personal, not project)
+.vscode/
+.idea/
+*.iml
+
+# OS junk
+.DS_Store
+Thumbs.db
