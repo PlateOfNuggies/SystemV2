@@ -106,6 +106,7 @@ public class Create implements COMMAND {
         stats.put("MAGmax", "0");
         stats.put("RESmax", "0");
         stats.put("SPDmax", "0");
+        
         stats.put("OFFcurr", "0");
         stats.put("DEFcurr", "0");
         stats.put("MAGcurr", "0");
