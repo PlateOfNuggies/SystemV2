@@ -15,6 +15,7 @@ import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
 public class Create implements COMMAND {
     JDA api;
     String name = "create";
+    String help = "Use with the name of the character you would like to create. Usage:\n`!create \"name\"`";
     String[] parameters;
     MessageChannel channel;
     Message event;
@@ -35,6 +36,13 @@ public class Create implements COMMAND {
         return this;
     }
 
+    /**
+     * Function to create a new chracter file with a given name.
+     * If the file already exists or the name is invalid, an error message will be sent to the channel.
+     * 
+     * Parameters:
+     * - parameters[1]: The name of the character to be created.
+     */
     @Override
     public void execute() {
 
@@ -43,9 +51,7 @@ public class Create implements COMMAND {
         }
 
         if (parameters.length < 2) {
-            channel.sendMessage(
-                    name + " called without enough parameters. Use with the name of the character you would like to create. Usage:\n !create \"name\"")
-                    .queue();
+            channel.sendMessage(name + " called without enough parameters. " + help).queue();
             return;
         } else {
             try {
@@ -106,6 +112,7 @@ public class Create implements COMMAND {
         stats.put("MAGmax", "0");
         stats.put("RESmax", "0");
         stats.put("SPDmax", "0");
+
         stats.put("OFFcurr", "0");
         stats.put("DEFcurr", "0");
         stats.put("MAGcurr", "0");

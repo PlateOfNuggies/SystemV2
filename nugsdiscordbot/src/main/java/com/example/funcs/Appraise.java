@@ -16,6 +16,7 @@ import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
 public class Appraise implements COMMAND {
     JDA api;
     String name = "appraise";
+    String help = "Use with the name of the character you would like to appraise. (Optional: Level of appraisal, default 10.) Usage:\n`!appraise \"name\" <level>`";
     String[] parameters;
     MessageChannel channel;
     Message event;
@@ -39,6 +40,14 @@ public class Appraise implements COMMAND {
         return this;
     }
 
+    /**
+     * Function to appraise a character. This function will read the character's JSON file and output their stats and skills in a formatted message.
+     * If the character does not exist, it will state that the character could not be found.
+     * 
+     * Parameters:
+     * - parameters[1]: The name of the character to appraise.
+     * - parameters[2]: The level of Appraisal used (default: 10).
+     */
     @Override
     public void execute() {
 
@@ -47,13 +56,14 @@ public class Appraise implements COMMAND {
         }
 
         if (parameters.length < 2) {
-            channel.sendMessage(
-                    name + " called without enough parameters. Use with the name of the character you would like to appraise. Usage:\n !appraise \"name\"")
-                    .queue();
+            channel.sendMessage(name + " called without enough parameters. " + help).queue();
             return;
         } else {
+            if (parameters.length < 3) {
+                parameters = new String[] {parameters[0], parameters[1], "10"};
+            }
 
-            System.out.println("Called Appraise on " + parameters[1]);
+            System.out.println("Called Appraise on " + parameters[1] + " with level " + parameters[2]);
             File f = new File(charaPath + "\\" + parameters[1] + ".txt");
             if (f.isFile()) {
                 channel.sendMessage("Appraising " + parameters[1]).queue();
@@ -76,16 +86,16 @@ public class Appraise implements COMMAND {
                             + "Name: " + charaSheetJSON.getString("name")
                             + " | Species: " + charaSheetJSON.getString("species")
                             + "\nStats:\n"
-                            + " HP: " + charaSheetJSON.getJSONObject("stats").getInt("HP")
-                            + " MP: " + charaSheetJSON.getJSONObject("stats").getInt("MP")
-                            + " SPY: " + charaSheetJSON.getJSONObject("stats").getInt("SPY")
-                            + " SPR: " + charaSheetJSON.getJSONObject("stats").getInt("SPR")
+                            + " HP: " + charaSheetJSON.getJSONObject("stats").getInt("HPcurr") + "/" + charaSheetJSON.getJSONObject("stats").getInt("HPmax")
+                            + " MP: " + charaSheetJSON.getJSONObject("stats").getInt("MPcurr") + "/" + charaSheetJSON.getJSONObject("stats").getInt("MPmax")
+                            + " SPY: " + charaSheetJSON.getJSONObject("stats").getInt("SPYcurr") + "/" + charaSheetJSON.getJSONObject("stats").getInt("SPYmax")
+                            + " SPR: " + charaSheetJSON.getJSONObject("stats").getInt("SPRcurr") + "/" + charaSheetJSON.getJSONObject("stats").getInt("SPRmax")
                             + "\n"
-                            + " OFF: " + charaSheetJSON.getJSONObject("stats").getInt("OFF")
-                            + " DEF: " + charaSheetJSON.getJSONObject("stats").getInt("DEF")
-                            + " MAG: " + charaSheetJSON.getJSONObject("stats").getInt("OFF")
-                            + " RES: " + charaSheetJSON.getJSONObject("stats").getInt("RES")
-                            + " SPD: " + charaSheetJSON.getJSONObject("stats").getInt("SPD")
+                            + " OFF: " + charaSheetJSON.getJSONObject("stats").getInt("OFFcurr")
+                            + " DEF: " + charaSheetJSON.getJSONObject("stats").getInt("DEFcurr")
+                            + " MAG: " + charaSheetJSON.getJSONObject("stats").getInt("OFFcurr")
+                            + " RES: " + charaSheetJSON.getJSONObject("stats").getInt("REScurr")
+                            + " SPD: " + charaSheetJSON.getJSONObject("stats").getInt("SPDcurr")
                             + "\nSkills:\n " + charaSheetJSON.getString("skills")
                             + "\n```";
 

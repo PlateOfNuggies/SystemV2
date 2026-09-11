@@ -14,6 +14,7 @@ import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
 public class Add implements COMMAND {
     JDA api;
     String name = "add";
+    String help = "Use with a name and something to add! Usage: \n`!add \"Character name\" \"skill name\" \"skill name\" ...`";
     String[] parameters;
     MessageChannel channel;
     Message event;
@@ -37,6 +38,14 @@ public class Add implements COMMAND {
         return this;
     }
 
+    /**
+     * Function to add a skill to a character, or skill XP if the skill already exists.
+     * If the character or skill doesn't exist, it will return an error message.
+     * 
+     * Parameters:
+     * parameters[1] = Character name
+     * parameters[2] = Skill name
+     */
     @Override
     public void execute() {
 
@@ -45,9 +54,7 @@ public class Add implements COMMAND {
         }
 
         if (parameters.length < 3) {
-            channel.sendMessage(
-                    name + " called without enough parameters. Use with a name and something to add! Usage: \n!add \"Character name\" \"skill name\" \"skill name\" ...")
-                    .queue();
+            channel.sendMessage(name + " called without enough parameters. " + help).queue();
             return;
         } else {
 
