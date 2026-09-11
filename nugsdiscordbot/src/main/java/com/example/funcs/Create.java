@@ -35,6 +35,13 @@ public class Create implements COMMAND {
         return this;
     }
 
+    /**
+     * Function to create a new chracter file with a given name.
+     * If the file already exists or the name is invalid, an error message will be sent to the channel.
+     * 
+     * Parameters:
+     * - parameters[1]: The name of the character to be created.
+     */
     @Override
     public void execute() {
 
@@ -106,7 +113,7 @@ public class Create implements COMMAND {
         stats.put("MAGmax", "0");
         stats.put("RESmax", "0");
         stats.put("SPDmax", "0");
-        
+
         stats.put("OFFcurr", "0");
         stats.put("DEFcurr", "0");
         stats.put("MAGcurr", "0");
