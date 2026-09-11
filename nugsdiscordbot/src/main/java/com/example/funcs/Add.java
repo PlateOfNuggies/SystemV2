@@ -40,6 +40,10 @@ public class Add implements COMMAND {
     /**
      * Function to add a skill to a character, or skill XP if the skill already exists.
      * If the character or skill doesn't exist, it will return an error message.
+     * 
+     * Parameters:
+     * parameters[1] = Character name
+     * parameters[2] = Skill name
      */
     @Override
     public void execute() {
